@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+            <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Sports</title>
+          <link rel="stylesheet" href="../css/index-form.css">
+         <link rel="stylesheet" href="../css/card-container.css">
+        </head>
+        <body>
+            <div id="container">
+                <div id="wrapper1">
+                 <!-- form    -->
+                    <form 
+                        action="" 
+                        onsubmit="event.preventDefault()" 
+                        id="form">
+                            <div class="bottom-border form-div">
+                                <h1 id="form-title">
+                                     Add Player Details
+                                </h1>
+                            </div>
+
+                            <div class="form-div">
+                                <label for="name">
+                                    Name
+                                </label>
+                                <div class="input-div">
+                                    <input 
+                                        type="text" 
+                                        class="input" 
+                                        id="name" 
+                                        value="">
+                                    <p 
+                                        class="error" 
+                                        id="name-error">
+                                    </p>
+                                </div>
+                            </div >
+
+                            <div class="form-div">
+                                <label for="age">
+                                    Age
+                                </label>
+                                <div class="input-div">
+                                    <input 
+                                         type="number" 
+                                         class="input" 
+                                         id="age" 
+                                         value="">
+                                    <p 
+                                    class="error" 
+                                    id="age-error"></p>
+                                </div>
+                            </div>
+
+
+                            <div class="form-div">
+                                <label for="gender">
+                                    Gender
+                                </label>
+                                <div class="input-div">
+                                <select 
+                                    type="text" 
+                                    class="input" 
+                                    id="gender" 
+                                    value="">
+                                         <option value="male">male</option>
+                                         <option value="female">female</option>
+                                </select>
+                                <p class="error" id="gender-error"></p>
+                                </div>
+                            </div>
+                
+                            <div class="form-div">
+                                <label for="sport-type">
+                                    Sport Type
+                                </label>
+                                <div class="input-div">
+                                <select 
+                                    type="text" 
+                                    class="input" 
+                                    id="sport-type" 
+                                    value="" 
+                                    onchange="renderSelect(this.value)">
+                                        <option value="outdoor">outdoor</option>
+                                        <option value="indoor">indoor</option>
+                                </select>
+                                <p class="error" id="sportType-error"></p>
+                                </div>
+                            </div>
+                
+                            <div class="form-div">
+                                <label for="sport">
+                                    Sport
+                                </label>
+                                <div class="input-div">
+                                    <select 
+                                        type="text" 
+                                        class="input" 
+                                        id="sportSelect" 
+                                        value="" >                        
+                                    </select>
+                                    <p class="error" id="sport-error"></p>
+                                </div>
+                            </div>
+
+                            <div class="bottom-border form-div">
+                                <label for="profile">
+                                    Profile
+                                </label>
+                                <div class="input-div" style="display: none;">
+                                    <input 
+                                        type="file" 
+                                        class="input" 
+                                        id="profile"
+                                        >
+                                </div>
+                                <div class="input-div">
+                                        <div class="file-input-div" >
+                                            <button onclick="triggerFile()">upload file</button>
+                                            <p id="fileName">No File Selected*</p>
+                                        </div>
+                                        <p class="error" id="profile-error"></p>
+                                </div>    
+                            </div>
+
+                            <div id="form-button-container">
+                                <button onclick="formaction()">
+                                    Add player
+                                </button>            
+                            </div>
+                    </form>
+                    <div>
+                    <button id="hidden-button" onclick="openPlayers()">show players</button>
+                    </div>
+            <!-- search box -->
+                    <div id="search-container">
+                        <div class="top-border search-div">
+                             <h4>
+                                Search by Name
+                            </h4>
+                            <input 
+                                type="text" 
+                                class="search-input" 
+                                name="name"
+                                 value="" 
+                                 onkeyup="searchrender(this)">
+                        </div>
+                        <div class="bottom-border search-div">
+                            <h4>
+                                Search by Catogory
+                             </h4>
+                            <select 
+                                type="text" 
+                                class="search-input" 
+                                id="sport-type" 
+                                name="sportType" 
+                                value="" 
+                                onchange="searchrender(this)">
+                                    <option value="">All</option>
+                                    <option value="indoor">indoor</option>
+                                    <option value="outdoor">outdoor</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <!-- player Details -->
+            <div id="wrapper2">
+                <button id="cancel-button" onclick="closePlayer()">X</button>
+                <h1 class="bottom-border">
+                    Players Details
+                </h1>
+                <div id="card-container">
+                
+                </div>
+            </div>
+        </div>
+
+    <script src="../js/index.js"></script>
+</body>
+</html>
