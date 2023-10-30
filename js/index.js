@@ -59,7 +59,8 @@ const players=[
 let formState="create"
 let selectedIndex="";
 let selectedFile="";
-let image=""
+let image="";
+let formValidity=true;
 
 
                 //for render players
@@ -161,6 +162,22 @@ renderPlayers(players);
                                 }
                           return valid
                        }
+                       
+                        //error messgae intiator
+                        const errInitiator=(formData)=>{
+                          if(!formValidity)
+                          {
+                          for(const value in formData)
+                              { if(value=="file")continue
+                                else document.getElementById(value+"-error").innerHTML=""
+                              }
+                          for(const value in formData)
+                          {  
+                             if(value==="file")continue
+                             else if(formData[value]=="")document.getElementById(value+"-error").innerHTML="this field is required *"    
+                          }
+                          }
+                        }
 
                        // form action
                       const formaction=()=>
@@ -177,29 +194,36 @@ renderPlayers(players);
                          }
                          else
                          {
-                          for(const value in formData)
-                              { if(value=="file")
-                              continue
-                                else
-                               document.getElementById(value+"-error").innerHTML=""
-                              }
-                          for(const value in formData)
-                          {  
-                             if(value==="file")
-                                  continue
-                             else if(formData[value]=="")
-                               document.getElementById(value+"-error").innerHTML="this field is required *"    
-                          }
+                          formValidity=false;
+                          errInitiator(formData);
                          }
                       }  
 
+                     
                       //deleter function
                       const deleter=(index)=>
                       {
+                        if(window.confirm("Are you sure,You want to delet this?"))
+                        {
                          players.splice(index,1);
                          renderPlayers(players);
                          initializeform();
+                        }
+                        else
+                         {}
                       }
+                      //error message handler
+
+                        const errorHandler=(element)=>{
+                          if(!formValidity)
+                          {
+                          if(element.value=="")
+                          document.getElementById(element.name+"-error").innerHTML="this field is required *"
+                          else
+                          document.getElementById(element.name+"-error").innerHTML=""
+                          }
+
+                        }
                        
 
                       //form initializer
@@ -209,6 +233,7 @@ renderPlayers(players);
                        selectedIndex=null
                        selectedFile=null;
                        image=null;
+                       formValidity=true;
                        document.getElementById("name").value=""
                        document.getElementById("age").value=""
                        document.getElementById("gender").value=""
@@ -228,6 +253,9 @@ initializeform();
                       const searchrender=(searchparam)=>
                       {
                         const {name,value}=searchparam;
+                        if(name=="name")document.getElementById("sport-type").value="";
+                        else document.getElementById("nameSearch").value="";
+
                          if(value==="")
                         renderPlayers(players);
                         else
@@ -278,17 +306,17 @@ initializeform();
 
                       })
                   // trigger file fetching
-                      const triggerFile=()=>{
-                        document.getElementById("profile").click();
-                      }
+                                const triggerFile=()=>{
+                                   document.getElementById("profile").click();
+                                  }
                   // close player popup
 
-                    const closePlayer=()=>{
-                             document.getElementById("wrapper2").style.display="none"
-                    }
+                                const closePlayer=()=>{
+                                    document.getElementById("wrapper2").style.display="none"
+                                  }
 
                  //open player popup
-                    const openPlayers=()=>{
-                      document.getElementById("wrapper2").style.display="block"
-                    }
+                                  const openPlayers=()=>{
+                                     document.getElementById("wrapper2").style.display="block"
+                                    }
   

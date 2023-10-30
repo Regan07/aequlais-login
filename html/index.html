@@ -30,7 +30,9 @@
                                         type="text" 
                                         class="input" 
                                         id="name" 
-                                        value="">
+                                        name="name"
+                                        value=""
+                                        oninput="errorHandler(this)">
                                     <p 
                                         class="error" 
                                         id="name-error">
@@ -47,7 +49,9 @@
                                          type="number" 
                                          class="input" 
                                          id="age" 
-                                         value="">
+                                         name="age"
+                                         value=""
+                                         oninput="errorHandler(this)">
                                     <p 
                                     class="error" 
                                     id="age-error"></p>
@@ -64,7 +68,9 @@
                                     type="text" 
                                     class="input" 
                                     id="gender" 
-                                    value="">
+                                    value=""
+                                    name="gender"
+                                    oninput="errorHandler(this)">
                                          <option value="male">male</option>
                                          <option value="female">female</option>
                                 </select>
@@ -81,8 +87,9 @@
                                     type="text" 
                                     class="input" 
                                     id="sport-type" 
+                                    name="sportType"
                                     value="" 
-                                    onchange="renderSelect(this.value)">
+                                    onchange="renderSelect(this.value) ;errorHandler(this)">
                                         <option value="outdoor">outdoor</option>
                                         <option value="indoor">indoor</option>
                                 </select>
@@ -99,7 +106,9 @@
                                         type="text" 
                                         class="input" 
                                         id="sportSelect" 
-                                        value="" >                        
+                                        name="sport"
+                                        value="" 
+                                        oninput="errorHandler(this)">                        
                                     </select>
                                     <p class="error" id="sport-error"></p>
                                 </div>
@@ -114,6 +123,8 @@
                                         type="file" 
                                         class="input" 
                                         id="profile"
+                                        name="profile"
+                                        oninput="errorHandler(this)"
                                         >
                                 </div>
                                 <div class="input-div">
@@ -144,6 +155,7 @@
                                 type="text" 
                                 class="search-input" 
                                 name="name"
+                                id="nameSearch"
                                  value="" 
                                  onkeyup="searchrender(this)">
                         </div>
